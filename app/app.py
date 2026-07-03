@@ -4,8 +4,13 @@ import pandas as pd
 
 app = Flask(__name__)
 
-# Load the trained model
-model = joblib.load("../model/StudentScorePrediction.pkl")
+import os
+import joblib
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "..", "model", "StudentScorePrediction.pkl")
+
+model = joblib.load(MODEL_PATH)
 
 
 @app.route("/")
